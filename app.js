@@ -8,7 +8,12 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://rockbangla.vercel.app/",
+  })
+);
 app.use(express.urlencoded({ extended: false }));
 dotenv.config();
 db(process.env.MONGO);
@@ -51,4 +56,6 @@ app.post("/send/mail", async (req, res, next) => {
 // Routes
 app.use("/api/users", authRoute);
 app.use("/api/tickets", ticketRoute);
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+  console.log(`${process.env.PORT}`);
+});
