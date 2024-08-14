@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://rockbangla.vercel.app/",
+    origin: "https://rockbangla.vercel.app",
   })
 );
 app.use(express.urlencoded({ extended: false }));
